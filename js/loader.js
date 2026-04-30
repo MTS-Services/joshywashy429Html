@@ -15,6 +15,7 @@ function loadHeader() {
             header.innerHTML = html;
             document.body.insertBefore(header, document.body.firstChild);
             updateNavActive();
+            document.dispatchEvent(new CustomEvent('site-components-loaded'));
         });
 }
 
@@ -38,11 +39,12 @@ function loadFooter() {
 function updateNavActive() {
     const links = document.querySelectorAll('.nav-links a, .mobile-menu a');
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const activePage = currentPage === 'property.html' ? 'realestate.html' : currentPage;
     links.forEach(link => {
         let href = link.getAttribute('href');
         // Extract just the filename
         const filename = href.split('/').pop() || 'index.html';
-        link.classList.toggle('active', filename === currentPage);
+        link.classList.toggle('active', filename === activePage);
     });
 }
 
