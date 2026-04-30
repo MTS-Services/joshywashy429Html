@@ -17,17 +17,17 @@ function getPropertyPageHref(slug) {
 function renderPropertyGrid(container, properties) {
     container.innerHTML = properties.map(property => `
         <a class="listing-card reveal" href="${getPropertyPageHref(property.slug)}">
-            <div class="listing-media">
+            <div class="listing-media listing-media-large" style="background-image: url('${resolveAssetUrl(property.heroImage)}');">
                 <img src="${resolveAssetUrl(property.heroImage)}" alt="${property.title}">
                 <div class="listing-badge">${property.category}</div>
             </div>
             <div class="listing-body">
-                <div class="prop-category">${property.location}</div>
+                <div class="listing-location">${property.location}</div>
                 <div class="listing-title">${property.title}</div>
                 <div class="listing-desc">${property.summary}</div>
                 <div class="listing-foot">
-                    <span>View Details</span>
-                    <span>→</span>
+                    <span>${property.documents.length} DOCUMENT${property.documents.length !== 1 ? 'S' : ''}</span>
+                    <span>OPEN</span>
                 </div>
             </div>
         </a>
@@ -107,8 +107,8 @@ function renderPropertyDetail(container, property, properties) {
         <section class="section related-section">
             <div class="reveal">
                 <div class="section-label">More Listings</div>
-                <h2 class="section-title">Related <span class="accent">Properties</span></h2>
-                <p class="section-sub">Other available properties in the Mikhail Holdings portfolio.</p>
+                <h2 class="section-title">Other <span class="accent">Properties</span></h2>
+                <p class="section-sub">Explore other available listings with the same document-driven format.</p>
             </div>
             <div class="related-grid reveal" id="${relatedId}"></div>
         </section>
@@ -167,9 +167,13 @@ function renderPropertyDetail(container, property, properties) {
         <a class="related-card reveal" href="${getPropertyPageHref(item.slug)}">
             <img src="${resolveAssetUrl(item.heroImage)}" alt="${item.title}">
             <div class="related-card-body">
-                <span class="prop-category">${item.category}</span>
+                <span class="related-kicker">${item.location}</span>
                 <strong>${item.title}</strong>
-                <p>${item.location}</p>
+                <p>${item.summary}</p>
+                <div class="related-footer">
+                    <span>${item.documents.length} documents</span>
+                    <span>Open</span>
+                </div>
             </div>
         </a>
     `).join('');
