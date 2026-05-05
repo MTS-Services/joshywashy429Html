@@ -1,30 +1,146 @@
-<!-- CURSOR -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursor-ring"></div>
-
 <!-- NAV -->
 <nav id="navbar">
-    <a href="index.html" class="nav-logo">
-        <div class="logo-mark">M</div>
-        <span>Mikhail Holdings</span>
-    </a>
-    <div class="nav-links" id="navLinks">
-        <a href="index.html" class="active">Home</a>
-        <a href="pages/realestate.html">Real Estate</a>
-        <a href="pages/manufacturing.html">Manufacturing</a>
-        <a href="pages/rnd.html">Research &amp; Development</a>
-        <a href="pages/retail.html">Retail/Consumer</a>
+    <div class="nav-container">
+        <a href="/" class="nav-logo" id="logo-link">
+            <span class="logo-text">MIKHAIL HOLDINGS LTD.</span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="/index.html" class="nav-item" id="nav-home">Home</a>
+            <a href="/pages/realestate.html" class="nav-item" id="nav-realestate">Real Estate</a>
+            <a href="/pages/manufacturing.html" class="nav-item" id="nav-manufacturing">Manufacturing</a>
+            <a href="/pages/rnd.html" class="nav-item" id="nav-rnd">Research & Development</a>
+            <a href="/pages/retail.html" class="nav-item" id="nav-retail">Retail/Consumer</a>
+        </div>
+        <button class="hamburger" id="hamburger" onclick="toggleMobile()">
+            <span></span><span></span><span></span>
+        </button>
     </div>
-    <button class="hamburger" id="hamburger" onclick="toggleMobile()">
-        <span></span><span></span><span></span>
-    </button>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html">Home</a>
-    <a href="pages/realestate.html">Real Estate</a>
-    <a href="pages/manufacturing.html">Manufacturing</a>
-    <a href="pages/rnd.html">R &amp; D</a>
-    <a href="pages/retail.html">Retail/Consumer</a>
+    <a href="/index.html" class="mobile-item" id="mobile-home">Home</a>
+    <a href="/pages/realestate.html" class="mobile-item" id="mobile-realestate">Real Estate</a>
+    <a href="/pages/manufacturing.html" class="mobile-item" id="mobile-manufacturing">Manufacturing</a>
+    <a href="/pages/rnd.html" class="mobile-item" id="mobile-rnd">R & D</a>
+    <a href="/pages/retail.html" class="mobile-item" id="mobile-retail">Retail/Consumer</a>
 </div>
+
+<script>
+    // ═══════════════════════════════════════════════════════════════
+    // NAVIGATION SYSTEM - Sets active menu item
+    // ═══════════════════════════════════════════════════════════════
+
+    function activateNavigation() {
+        const pathname = window.location.pathname;
+        const hostname = window.location.hostname;
+        
+        console.log('🏠 CURRENT PAGE DETECTION');
+        console.log('Pathname:', pathname);
+        console.log('Hostname:', hostname);
+
+        // Get all links
+        const allLinks = document.querySelectorAll('.nav-item, .mobile-item');
+        console.log('✓ Found', allLinks.length, 'navigation links');
+
+        // Determine which should be active
+        let activeId = 'nav-home';  // Default to home
+        
+        // Explicit check for home page first
+        if (pathname === '/' || pathname.endsWith('/index.html') || pathname === '/index.html') {
+            activeId = 'nav-home';
+        } else if (pathname.includes('realestate.html')) {
+            activeId = 'nav-realestate';
+        } else if (pathname.includes('manufacturing.html') || pathname.includes('pancap')) {
+            activeId = 'nav-manufacturing';
+        } else if (pathname.includes('rnd.html')) {
+            activeId = 'nav-rnd';
+        } else if (pathname.includes('retail.html')) {
+            activeId = 'nav-retail';
+        } else if (pathname.includes('property.html')) {
+            activeId = 'nav-realestate';
+        }
+
+        console.log('📌 Active page ID:', activeId);
+
+        // Apply active state to matching links
+        allLinks.forEach(link => {
+            const linkId = link.getAttribute('id');
+            const isDesktop = linkId.startsWith('nav-');
+            const isMobile = linkId.startsWith('mobile-');
+            
+            // Get the base name (realestate, manufacturing, etc)
+            const baseName = linkId.replace('nav-', '').replace('mobile-', '');
+            const activeBaseName = activeId.replace('nav-', '');
+
+            if (baseName === activeBaseName) {
+                link.classList.add('active');
+                link.style.color = '#C8A96E'; // Gold color as backup
+                console.log('✅ SET ACTIVE:', linkId);
+            } else {
+                link.classList.remove('active');
+                link.style.color = 'white'; // Reset to white
+            }
+        });
+
+        // Fix href paths based on location
+        allLinks.forEach(link => {
+            const linkId = link.getAttribute('id');
+            
+            if (pathname.includes('/pages/')) {
+                // We're in /pages/ folder
+                if (linkId.includes('home')) {
+                    link.href = '../index.html';
+                } else if (linkId.includes('realestate')) {
+                    link.href = 'realestate.html';
+                } else if (linkId.includes('manufacturing')) {
+                    link.href = 'manufacturing.html';
+                } else if (linkId.includes('rnd')) {
+                    link.href = 'rnd.html';
+                } else if (linkId.includes('retail')) {
+                    link.href = 'retail.html';
+                }
+            } else {
+                // We're at root
+                if (linkId.includes('home')) {
+                    link.href = 'index.html';
+                } else if (linkId.includes('realestate')) {
+                    link.href = 'pages/realestate.html';
+                } else if (linkId.includes('manufacturing')) {
+                    link.href = 'pages/manufacturing.html';
+                } else if (linkId.includes('rnd')) {
+                    link.href = 'pages/rnd.html';
+                } else if (linkId.includes('retail')) {
+                    link.href = 'pages/retail.html';
+                }
+            }
+        });
+
+        // Fix logo link
+        const logoLink = document.getElementById('logo-link');
+        if (logoLink) {
+            if (pathname.includes('/pages/')) {
+                logoLink.href = '../index.html';
+            } else {
+                logoLink.href = 'index.html';
+            }
+        }
+    }
+
+    // Execute immediately
+    activateNavigation();
+
+    // Execute after small delays
+    setTimeout(activateNavigation, 10);
+    setTimeout(activateNavigation, 50);
+    setTimeout(activateNavigation, 100);
+    setTimeout(activateNavigation, 200);
+
+    // Execute on DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', activateNavigation);
+    }
+
+    // Execute on page load
+    window.addEventListener('load', activateNavigation);
+</script>
