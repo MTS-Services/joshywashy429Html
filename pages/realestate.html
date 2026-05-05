@@ -10,11 +10,30 @@
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;600;700&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        body {
+            padding-top: 120px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Header Include -->
+    <div id="header-placeholder"></div>
 
-    <!-- COMMON HEADER & FOOTER WILL LOAD HERE VIA JAVASCRIPT -->
+    <!-- Banner Section -->
+    <section class="banner">
+        <img src="../public/home_bg.jpg" alt="Real Estate Division" class="banner-img">
+        <div class="banner-overlay">
+            <h1 class="banner-title">Real Estate Division</h1>
+        </div>
+    </section>
 
     <!-- REAL ESTATE PAGE -->
     <div class="inner-hero" data-number="01">
@@ -31,9 +50,19 @@
     <div class="section" style="padding-top: 72px;">
         <div class="reveal">
             <div class="section-label">Portfolio</div>
-            <h2 class="section-title">Our <span class="accent">Properties</span></h2>
-            <p class="section-sub">Click any property to open the gallery, documents and related listings view.</p>
+            <h2 class="section-title">Click Below to <span class="accent">View Our Properties</span></h2>
         </div>
+
+        <!-- Category Filters -->
+        <div class="property-filters reveal" style="margin-top: 40px; margin-bottom: 48px;">
+            <button class="filter-btn active" data-category="all">All Properties</button>
+            <button class="filter-btn" data-category="Commercial / Office">Commercial Office Space</button>
+            <button class="filter-btn" data-category="Retail / Power Centre">Commercial Retail Space</button>
+            <button class="filter-btn" data-category="Residential / Townhomes">Residential Properties</button>
+            <button class="filter-btn" data-category="Commercial / Industrial">Industrial Properties</button>
+            <button class="filter-btn" data-category="Future / Developments">Future Developments</button>
+        </div>
+
         <div id="property-grid" class="property-grid reveal" style="margin-top: 48px;"></div>
     </div>
 

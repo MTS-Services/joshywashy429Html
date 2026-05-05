@@ -4,156 +4,71 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mikhail Holdings Ltd — Routes</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;600;700&display=swap"
-        rel="stylesheet" />
+    <title>Mikhail Holdings Ltd</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            padding-top: 120px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Header Include -->
+    <div id="header-placeholder"></div>
 
+    <!-- Main Content -->
     <main>
-        <section class="hero" style="min-height: 92vh;">
-            <div class="hero-bg"></div>
-            <div class="hero-grid"></div>
-            <div class="hero-content">
-                <div>
-                    <div class="hero-label">Portfolio Router</div>
-                    <h1 class="hero-title">
-                        Route into <span class="accent">Separate Pages.</span><br>
-                        Keep the <span class="accent">Layout Shared.</span>
-                    </h1>
-                    <p class="hero-desc">This entry page now acts as a route hub. Each division runs on its own page,
-                        while the shared header and footer are injected here as includes.</p>
-                    <div class="hero-actions">
-                        <a href="pages/realestate.html" class="btn-primary">
-                            <span>Open Real Estate</span>
-                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
-                        </a>
-                        <a href="pages/property.html?slug=3003-n-central" class="btn-outline">View Sample Property</a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="hero-card">
-                        <div class="hero-stats">
-                            <div class="stat-item">
-                                <div class="stat-num">4</div>
-                                <div class="stat-label">Division Pages</div>
-                                <div class="stat-divider"></div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-num">1</div>
-                                <div class="stat-label">Shared Header</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-num">1</div>
-                                <div class="stat-label">Shared Footer</div>
-                                <div class="stat-divider"></div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-num">PDF</div>
-                                <div class="stat-label">Detail Routing</div>
-                            </div>
-                        </div>
-                        <div class="hero-badge">
-                            <div class="badge-icon">
-                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"
-                                    viewBox="0 0 24 24">
-                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                                </svg>
-                            </div>
-                            <div class="badge-text"><strong>Standalone pages</strong><br>Each division now opens in its
-                                own URL instead of switching sections inside one page.</div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Banner Section -->
+        <section class="banner">
+            <img src="public/home_bg.jpg" alt="Commercial, Residential and Industrial Developers" class="banner-img">
+            <div class="banner-overlay">
+                <h1 class="banner-title">Commercial, Residential and Industrial Developers</h1>
             </div>
         </section>
 
-        <div class="marquee-wrap">
-            <div class="marquee-inner">
-                <div class="marquee-item">Real Estate Page</div>
-                <div class="marquee-item">Manufacturing Page</div>
-                <div class="marquee-item">Research &amp; Development Page</div>
-                <div class="marquee-item">Retail / Consumer Page</div>
-                <div class="marquee-item">Property Detail Page</div>
-                <div class="marquee-item">Shared Header</div>
-                <div class="marquee-item">Shared Footer</div>
-                <div class="marquee-item">Route Hub</div>
-                <div class="marquee-item">Real Estate Page</div>
-                <div class="marquee-item">Manufacturing Page</div>
-                <div class="marquee-item">Research &amp; Development Page</div>
-                <div class="marquee-item">Retail / Consumer Page</div>
-                <div class="marquee-item">Property Detail Page</div>
-                <div class="marquee-item">Shared Header</div>
-                <div class="marquee-item">Shared Footer</div>
-                <div class="marquee-item">Route Hub</div>
-            </div>
-        </div>
-
-        <section class="section">
-            <div class="reveal">
-                <div class="section-label">Pages</div>
-                <h2 class="section-title">Choose a <span class="accent">Destination</span></h2>
-                <p class="section-sub">Open a standalone page below. Each one loads the shared header and footer
-                    automatically.</p>
-            </div>
-
-            <div class="services-grid reveal" style="margin-top: 60px; grid-template-columns: repeat(2, 1fr);">
-                <a class="service-card" href="pages/realestate.html" style="text-decoration:none; display:block;">
-                    <div class="service-num">01</div>
-                    <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-                        <polyline points="9 22 9 12 15 12 15 22" />
-                    </svg>
-                    <div class="service-name">Real Estate</div>
-                    <div class="service-desc">Browse properties, galleries, and documents on the standalone real estate
-                        page.</div>
-                    <div class="service-arrow">→</div>
-                </a>
-                <a class="service-card" href="pages/manufacturing.html" style="text-decoration:none; display:block;">
-                    <div class="service-num">02</div>
-                    <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                        <path d="M2 20h20M4 20V10l6-6 6 6v10M10 20v-6h4v6" />
-                        <circle cx="12" cy="4" r="1" />
-                    </svg>
-                    <div class="service-name">Manufacturing</div>
-                    <div class="service-desc">Open the industrial solutions page with its own full content and
-                        navigation.</div>
-                    <div class="service-arrow">→</div>
-                </a>
-                <a class="service-card" href="pages/rnd.html" style="text-decoration:none; display:block;">
-                    <div class="service-num">03</div>
-                    <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                        <path
-                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0114 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                    </svg>
-                    <div class="service-name">Research &amp; Development</div>
-                    <div class="service-desc">Open the R&amp;D page with labs, innovation spaces, and related divisions.
-                    </div>
-                    <div class="service-arrow">→</div>
-                </a>
-                <a class="service-card" href="pages/retail.html" style="text-decoration:none; display:block;">
-                    <div class="service-num">04</div>
-                    <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                        <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                    </svg>
-                    <div class="service-name">Retail / Consumer</div>
-                    <div class="service-desc">Open the retail page for consumer-oriented developments and tenant
-                        strategy.</div>
-                    <div class="service-arrow">→</div>
-                </a>
+        <!-- Company Structure Section -->
+        <section class="company-structure">
+            <div class="container">
+                <h2 class="section-title">Company Structure</h2>
+                <div class="divisions-grid">
+                    <a href="pages/realestate.html" class="division-card">
+                        <span class="division-name">REAL ESTATE</span>
+                    </a>
+                    <a href="pages/manufacturing.html" class="division-card">
+                        <span class="division-name">MANUFACTURING</span>
+                    </a>
+                    <a href="pages/rnd.html" class="division-card">
+                        <span class="division-name">RESEARCH & DEVELOPMENT</span>
+                    </a>
+                    <a href="pages/retail.html" class="division-card">
+                        <span class="division-name">RETAIL/CONSUMER DEVELOPMENT</span>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
 
-    <script src="js/loader.js"></script>
-    <script src="js/main.js"></script>
+    <!-- Footer Include -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Load Header
+        fetch('includes/header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header-placeholder').innerHTML = data);
+
+        // Load Footer
+        fetch('includes/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    </script>
 </body>
 
 </html>

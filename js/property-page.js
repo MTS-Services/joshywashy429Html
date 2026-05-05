@@ -14,8 +14,14 @@ function getPropertyPageHref(slug) {
     return window.location.pathname.includes('/pages/') ? `property.html?slug=${slug}` : `pages/property.html?slug=${slug}`;
 }
 
-function renderPropertyGrid(container, properties) {
-    container.innerHTML = properties.map(property => `
+function renderPropertyGrid(container, properties, filter = 'all') {
+    let filteredProperties = properties;
+
+    if (filter !== 'all') {
+        filteredProperties = properties.filter(property => property.category === filter);
+    }
+
+    container.innerHTML = filteredProperties.map(property => `
         <a class="listing-card reveal" href="${getPropertyPageHref(property.slug)}">
             <div class="listing-media listing-media-large" style="background-image: url('${resolveAssetUrl(property.heroImage)}');">
                 <img src="${resolveAssetUrl(property.heroImage)}" alt="${property.title}">
@@ -193,6 +199,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const gridContainer = document.getElementById('property-grid-home') || document.getElementById('property-grid');
     if (gridContainer) {
         renderPropertyGrid(gridContainer, properties);
+
+        // Add filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.dataset.category;
+
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Re-render grid with filter
+                renderPropertyGrid(gridContainer, properties, category);
+            });
+        });
     }
 
     const detailContainer = document.getElementById('property-detail');
